@@ -118,7 +118,7 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
     // var nextButton = document.getElementById("next");
     var slides = document.querySelectorAll(".slide");
     let currentSlide = 0;
-    
+    var answerBtn = document.getElementById("answerBtn")
 
     showSlide(currentSlide);
 
