@@ -36,11 +36,11 @@ var QuestionList = [
         correctAnswer: 'a'
     },
     {
-        question: "What is Kristi's butt",
+        question: "Question",
         answers: {
-            a: 'smol',
-            b: 'big',
-            c: 'HUGE'
+            a: '1',
+            b: '2',
+            c: '3'
         },
         correctAnswer: 'c'
     }
@@ -115,9 +115,9 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
     
 
     showQuestions(questions, quizContainer);
-    const previousButton = document.getElementById("previous");
-    const nextButton = document.getElementById("next");
-    const slides = document.querySelectorAll(".slide");
+    var previousButton = document.getElementById("previous");
+    var nextButton = document.getElementById("next");
+    var slides = document.querySelectorAll(".slide");
     let currentSlide = 0;
 
     showSlide(currentSlide);
@@ -129,3 +129,13 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
     nextButton.addEventListener("click", showNextSlide);
 }
 
+//
+var questionFormHandler = function(event){
+    event.preventDefault();
+
+    var
+}
+var actionContainerEl = document.createElement("div")
+actionContainerEl.className = "answer-choices";
+
+var answerButtonEl = document.createElement("button")
