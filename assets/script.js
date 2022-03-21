@@ -66,20 +66,26 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
             for(letter in questions[i].answers){
                 answers.push(
                     '<label>' +
-                    '<input type="button" id ="answerBtn" name="question'+i+'" value="'+letter+'">' +
+                    '<input type="button" class="answerBtn" name="question'+i+'" value="'+letter+'">' +
                     ': ' +
                     questions[i].answers[letter] +
                     '</label>'
                 );
             }
+                for (var i=0; i<questions.length; i++){
+                 answerBtn.addEventListener("click", showNextSlide);
+            }
             output.push(
                 '<div class="slide"><div class="question">' + questions[i].question + '</div>' +
                 '<div class="answers">' + answers.join('') + '</div> </div>'
             );
+            
         }
         quizContainer.innerHTML = output.join('');
         
     }
+    
+    
 
     function showResults(questions, quizContainer, resultsContainer){
 
@@ -115,10 +121,10 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
 
     showQuestions(questions, quizContainer);
     var previousButton = document.getElementById("previous");
-    // var nextButton = document.getElementById("next");
+    var nextButton = document.getElementById("next");
     var slides = document.querySelectorAll(".slide");
     let currentSlide = 0;
-    var answerBtn = document.getElementById("answerBtn")
+    var answerBtn = document.querySelectorAll("answerBtn")
 
     showSlide(currentSlide);
 
@@ -126,7 +132,7 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
         showResults(questions, quizContainer, resultsContainer);
     }
     previousButton.addEventListener("click", showPreviousSlide);
-    // nextButton.addEventListener("click", showNextSlide);
+    nextButton.addEventListener("click", showNextSlide);
     answerBtn.addEventListener("click", showNextSlide);
 }
 
