@@ -66,8 +66,7 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
             for(letter in questions[i].answers){
                 answers.push(
                     '<label>' +
-                    '<input type="radio" name="question'+i+'" value="'+letter+'">' +
-                    letter +
+                    '<input type="button" id ="answerBtn" name="question'+i+'" value="'+letter+'">' +
                     ': ' +
                     questions[i].answers[letter] +
                     '</label>'
@@ -116,9 +115,10 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
 
     showQuestions(questions, quizContainer);
     var previousButton = document.getElementById("previous");
-    var nextButton = document.getElementById("next");
+    // var nextButton = document.getElementById("next");
     var slides = document.querySelectorAll(".slide");
     let currentSlide = 0;
+    
 
     showSlide(currentSlide);
 
@@ -126,16 +126,17 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
         showResults(questions, quizContainer, resultsContainer);
     }
     previousButton.addEventListener("click", showPreviousSlide);
-    nextButton.addEventListener("click", showNextSlide);
+    // nextButton.addEventListener("click", showNextSlide);
+    answerBtn.addEventListener("click", showNextSlide);
 }
 
-//
-var questionFormHandler = function(event){
-    event.preventDefault();
 
-    var
-}
-var actionContainerEl = document.createElement("div")
-actionContainerEl.className = "answer-choices";
+// var questionFormHandler = function(event){
+//     event.preventDefault();
 
-var answerButtonEl = document.createElement("button")
+//     var
+// }
+// var actionContainerEl = document.createElement("div")
+// actionContainerEl.className = "answer-choices";
+
+// var answerButtonEl = document.createElement("button")
