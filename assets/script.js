@@ -36,11 +36,11 @@ var QuestionList = [
         correctAnswer: 'a'
     },
     {
-        question: "Question",
+        question: "What is Kristi's butt",
         answers: {
-            a: '1',
-            b: '2',
-            c: '3'
+            a: 'smol',
+            b: 'big',
+            c: 'HUGE'
         },
         correctAnswer: 'c'
     }
@@ -66,26 +66,21 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
             for(letter in questions[i].answers){
                 answers.push(
                     '<label>' +
-                    '<input type="button" class="answerBtn" name="question'+i+'" value="'+letter+'">' +
+                    '<input type="radio" class="answerBtn" name="question'+i+'" value="'+letter+'">' +
+                    letter +
                     ': ' +
                     questions[i].answers[letter] +
                     '</label>'
                 );
             }
-                for (var i=0; i<questions.length; i++){
-                 answerBtn.addEventListener("click", showNextSlide);
-            }
             output.push(
                 '<div class="slide"><div class="question">' + questions[i].question + '</div>' +
                 '<div class="answers">' + answers.join('') + '</div> </div>'
             );
-            
         }
         quizContainer.innerHTML = output.join('');
         
     }
-    
-    
 
     function showResults(questions, quizContainer, resultsContainer){
 
@@ -111,8 +106,12 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
       }
 
       function showNextSlide() {
-        showSlide(currentSlide + 1);
-      }
+        if (currentSlide === QuestionList.length-1){
+            showResults(questions, quizContainer, resultsContainer);
+        }else {
+            showSlide(currentSlide + 1);
+        }
+    } 
     
       function showPreviousSlide() {
         showSlide(currentSlide - 1);
@@ -120,11 +119,11 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
     
 
     showQuestions(questions, quizContainer);
-    var previousButton = document.getElementById("previous");
-    var nextButton = document.getElementById("next");
-    var slides = document.querySelectorAll(".slide");
+    const previousButton = document.getElementById("previous");
+    const nextButton = document.getElementById("next");
+    const slides = document.querySelectorAll(".slide");
+    var answerBtn = document.querySelectorAll(".answerBtn")
     let currentSlide = 0;
-    var answerBtn = document.querySelectorAll("answerBtn")
 
     showSlide(currentSlide);
 
@@ -133,16 +132,8 @@ function startQuiz(questions, quizContainer, resultsContainer, submitButton){
     }
     previousButton.addEventListener("click", showPreviousSlide);
     nextButton.addEventListener("click", showNextSlide);
-    answerBtn.addEventListener("click", showNextSlide);
+    for (var i=0;i<answerBtn.length;i++){
+        answerBtn[i].addEventListener("click", showNextSlide);
+    }
 }
 
-
-// var questionFormHandler = function(event){
-//     event.preventDefault();
-
-//     var
-// }
-// var actionContainerEl = document.createElement("div")
-// actionContainerEl.className = "answer-choices";
-
-// var answerButtonEl = document.createElement("button")
