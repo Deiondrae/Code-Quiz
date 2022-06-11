@@ -12,11 +12,21 @@
     <div class="quiz-container">
         <div id="quiz"></div>
     </div>
+    <div id="buttons">
     <button id="start"> Start Quiz</button>
     <button id="previous">Previous Question</button>
     <button id="next">Next Question</button>
     <button id="submit">Submit Quiz</button>
-    <div id="results"></div>
+    </div>
+    <div id="results" class="hide">
+    </div>
+    <div id="scores" class="hide">
+    <h2>Quiz over! Enter your initials</h2>
+        <form>
+            <label for="Initials">Initials:</label>
+            <input type="text" id="Initials" name="initials">
+        </form>
+        <button id="submitScore">Submit</button></div>
     <script src="./assets/script.js"></script>
 </body>
 </html>

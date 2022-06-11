@@ -1,11 +1,11 @@
 var QuestionList = [
     {
-        question: "Inside which HTML element do we put the JavaScript?",
+        question: "Inside which HTML tag do we put the JavaScript?",
         answers: {
-            a: '<javascript>',
-            b: '<scripting>',
-            c: '<script>',
-            d: '<js>'
+            a: 'javascript',
+            b: 'scripting',
+            c: 'script',
+            d: 'js'
         },
         correctAnswer: 'd'
     },
@@ -140,6 +140,10 @@ const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const answerBtn = document.querySelectorAll(".answerBtn");
 const startButton = document.getElementById("start");
+const buttonContainer = document.getElementById("buttons")
+const submitScore = document.getElementById("submitScore")
+const scoresContainer = document.getElementById("scores")
+
 var Time = 60;
 var timer = document.getElementById("time")
 timer.textContent = Time
@@ -165,7 +169,7 @@ var startQuiz = function(questions, quizContainer, resultsContainer, submitButto
                     letter +
                     ': ' +
                     questions[i].answers[letter] +
-                    '</label>'
+                    '</label><br>'
                 );
             }
             output.push(
@@ -191,7 +195,7 @@ var startQuiz = function(questions, quizContainer, resultsContainer, submitButto
                 numCorrect++;
             }
         }
-        resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+        resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;   
     }
 
     function showSlide(n) {
@@ -250,7 +254,24 @@ var lowerTimer = function(seconds) {
 var startTimer = function(){
     timerStarted = true
 }
+var endQuiz = function(){
+    buttonContainer.remove();
+    quizContainer.remove();
+    timer.remove();
+    resultsContainer.classList.toggle('hide');
+    scoresContainer.classList.toggle('hide')
+}
+var storeScore = function() {
+    var intials = document.getElementById("Initials").value
+    finalScore = document.getElementById("results").innerHTML
+    localStorage.setItem(intials, finalScore)
+}
 
+var checkAnswer = function(){
+    
+}
 startButton.addEventListener("click", startTimer);
 startButton.addEventListener("click", () => {startQuiz(QuestionList, quizContainer, resultsContainer, submitButton)});
 startButton.addEventListener("click", countdown);
+submitButton.addEventListener("click", endQuiz);
+submitScore.addEventListener("click", storeScore);
