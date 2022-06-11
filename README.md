@@ -1,2 +1,2 @@
 # Code-Quiz
-Js based coding quiz
+Js based time coding quiz, with ability to save highscore into localstorage
